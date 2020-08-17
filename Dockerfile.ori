@@ -1,0 +1,21 @@
+FROM tomcat:7.0.105
+
+MAINTAINER kakapari@gmail.com
+
+# add context to /usr/local/tomcat/webapps
+# COPY ./sample.war /usr/local/tomcat/webapps/sample.war
+ADD cmdb.war /usr/local/tomcat/webapps/cmdb.war
+
+ADD comunes.war /usr/local/tomcat/webapps/comunes.war
+
+ADD imagen.war /usr/local/tomcat/webapps/imagen.war
+
+ADD server.xml /usr/local/tomcat/conf/
+
+ADD context.xml /usr/local/tomcat/conf/
+
+ADD tomcat-users.xml /usr/local/tomcat/conf/
+
+EXPOSE 8080
+
+CMD ["catalina.sh","run"]
