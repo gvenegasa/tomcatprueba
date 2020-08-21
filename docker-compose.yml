@@ -1,11 +1,22 @@
-version: '3.1'
+version: '3.8'
 
 services:
-
   flensatomcat:
-    image: tomcat:7.0.105
+    image: tomcat:7.0.94-jre7
     ports:
-    - 8082:8080
+    - 8082:8082
+    - 8006:8006
+    - 8443:8443
+    - 8083:8083
+    - 8080:8080
     volumes:
-      - ./conf:/usr/local/tomcat
+            #      - ./conf:/usr/local/tomcat/conf
+      - ./conf/context.xml:/usr/local/tomcat/conf/context.xml
+      - ./conf/server.xml:/usr/local/tomcat/conf/server.xml
+      - ./conf/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
+      - ./conf/ssl:/usr/local/tomcat/conf/ssl
       - ./webapps:/usr/local/tomcat/webapps
+      - ./logs:/usr/local/tomcat/logs
+      - ./SIIF_LOG:/usr/local/tomcat/SIIF_LOG
+
+
